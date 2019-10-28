@@ -1,6 +1,8 @@
 package BlackJack.view;
 
-public class SwedishView implements IView 
+import BlackJack.controller.SelectedActionView;
+
+public class SwedishView implements IView
     {
         public void DisplayWelcomeMessage()
         {
@@ -10,6 +12,23 @@ public class SwedishView implements IView
             System.out.println("Hej Black Jack Världen");
             System.out.println("----------------------");
             System.out.println("Skriv 'p' för att Spela, 'h' för nytt kort, 's' för att stanna 'q' för att avsluta\n");
+        }
+
+        public SelectedActionView GetSelectedActionView(){
+            int inputValue = GetInput();
+
+            switch (inputValue){
+                case 'p':
+                    return SelectedActionView.Newgame;
+                case 'h':
+                    return SelectedActionView.Hit;
+                case 's':
+                    return SelectedActionView.Stand;
+                case 'q':
+                    return SelectedActionView.Quit;
+                default:
+                    return SelectedActionView.Default;
+            }
         }
         
         public int GetInput()

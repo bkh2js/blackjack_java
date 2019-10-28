@@ -16,21 +16,25 @@ public class PlayGame {
         a_view.DisplayGameOver(a_game.IsDealerWinner());
     }
 
-    int input = a_view.GetInput();
+    SelectedActionView input = a_view.GetSelectedActionView();
     
-    if (input == 'p')
+    if (input == SelectedActionView.Newgame)
     {
         a_game.NewGame();
     }
-    else if (input == 'h')
+    else if (input == SelectedActionView.Hit)
     {
         a_game.Hit();
     }
-    else if (input == 's')
+    else if (input == SelectedActionView.Stand)
     {
         a_game.Stand();
     }
+    else if (input == SelectedActionView.Default)
+    {
+      a_game.NewGame();
+    }
 
-    return input != 'q';
+    return input != SelectedActionView.Quit;
   }
 }
