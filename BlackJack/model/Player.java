@@ -71,4 +71,13 @@ public class Player {
 
     return score;
   }
+
+    public boolean hasAce() {
+      for( Card c : GetHand()){
+          if(c.GetValue() ==  Card.Value.Ace){
+              return true;
+          }
+      }
+      return false;
+    }
 }
