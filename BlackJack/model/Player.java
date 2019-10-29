@@ -6,7 +6,7 @@ import java.util.LinkedList;
 public class Player {
 
   private List<Card> m_hand;
-  protected final int g_maxScore = 21;
+  private int g_maxScore = 21;
 
   public Player()
   {
@@ -79,5 +79,9 @@ public class Player {
           }
       }
       return false;
+    }
+
+    public int GetMaxScore(){
+      return g_maxScore;
     }
 }
