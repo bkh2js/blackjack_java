@@ -1,13 +1,15 @@
 package BlackJack.model;
 
+import BlackJack.controller.GameEventPublisher;
+
 public class Game {
 
   private Dealer m_dealer;
   private Player m_player;
 
-  public Game()
+  public Game(GameEventPublisher eventPublisher)
   {
-    m_dealer = new Dealer(new BlackJack.model.rules.RulesFactory());
+    m_dealer = new Dealer(new BlackJack.model.rules.RulesFactory(), eventPublisher);
     m_player = new Player();
   }
     

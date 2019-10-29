@@ -82,4 +82,8 @@ public class SimpleView implements IView
             }
             
         }
+
+        public void DisplayPauseMessage (){
+            System.out.println("============================= A player is getting a card");
+        }
     }

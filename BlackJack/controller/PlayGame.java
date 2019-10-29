@@ -3,38 +3,65 @@ package BlackJack.controller;
 import BlackJack.view.IView;
 import BlackJack.model.Game;
 
-public class PlayGame {
+public class PlayGame implements IGameEventSubscriber {
 
-  public boolean Play(Game a_game, IView a_view) {
-    a_view.DisplayWelcomeMessage();
-    
-    a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
-    a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
+  private Game m_game;
+  private IView m_view;
 
-    if (a_game.IsGameOver())
+  public PlayGame(Game a_game, IView a_view){
+    m_game = a_game;
+    m_view = a_view;
+  }
+
+  public boolean Play() {
+    m_view.DisplayWelcomeMessage();
+    displayPlayersHand();
+
+    if (m_game.IsGameOver())
     {
-        a_view.DisplayGameOver(a_game.IsDealerWinner());
+        m_view.DisplayGameOver(m_game.IsDealerWinner());
     }
 
-    SelectedActionView input = a_view.GetSelectedActionView();
+    SelectedActionView input = m_view.GetSelectedActionView();
     
     if (input == SelectedActionView.Newgame)
     {
-        a_game.NewGame();
+        m_game.NewGame();
     }
     else if (input == SelectedActionView.Hit)
     {
-        a_game.Hit();
+        m_game.Hit();
     }
     else if (input == SelectedActionView.Stand)
     {
-        a_game.Stand();
+        m_game.Stand();
     }
     else if (input == SelectedActionView.Default)
     {
-      a_game.NewGame();
+      m_game.NewGame();
     }
 
     return input != SelectedActionView.Quit;
+  }
+
+  @Override
+  public void Notify() {
+    m_view.DisplayPauseMessage();
+    sleep2Seconds();
+    displayPlayersHand();
+  }
+
+  private void displayPlayersHand(){
+    m_view.DisplayDealerHand(m_game.GetDealerHand(), m_game.GetDealerScore());
+    m_view.DisplayPlayerHand(m_game.GetPlayerHand(), m_game.GetPlayerScore());
+  }
+
+  private void sleep2Seconds(){
+    try {
+      Thread.sleep(4000);
+    } catch (Exception e){
+
+    }
+
   }
 }

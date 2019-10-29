@@ -91,4 +91,8 @@ public class SwedishView implements IView
             System.out.println("Poäng: " + a_score);
             System.out.println("");
         }
+
+        public void DisplayPauseMessage (){
+            System.out.println("... A player is getting a card");
+        }
     }

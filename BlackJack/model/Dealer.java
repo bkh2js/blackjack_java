@@ -1,5 +1,6 @@
 package BlackJack.model;
 
+import BlackJack.controller.GameEventPublisher;
 import BlackJack.model.rules.*;
 
 public class Dealer extends Player {
@@ -8,12 +9,14 @@ public class Dealer extends Player {
   private INewGameStrategy m_newGameRule;
   private IHitStrategy m_hitRule;
   private IWinGameStrategy m_winRule;
+  private GameEventPublisher m_eventPublisher;
 
-  public Dealer(RulesFactory a_rulesFactory) {
+  public Dealer(RulesFactory a_rulesFactory, GameEventPublisher eventPublisher) {
   
     m_newGameRule = a_rulesFactory.GetNewGameRule();
     m_hitRule = a_rulesFactory.GetHitRule();
     m_winRule = a_rulesFactory.GetWinnerRule();
+    m_eventPublisher = eventPublisher;
     
     /*for(Card c : m_deck.GetCards()) {
       c.Show(true);
@@ -67,5 +70,10 @@ public class Dealer extends Player {
     Card c = m_deck.GetCard();
     c.Show(isCardShown);
     a_player.DealCard(c);
+    triggerHandInCardEvent();
+  }
+
+  public void triggerHandInCardEvent(){
+    m_eventPublisher.Notify();
   }
 }

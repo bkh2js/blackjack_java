@@ -9,11 +9,13 @@ public class Program
 
   public static void main(String[] a_args)
   {
-  
-    Game g = new Game();
+    GameEventPublisher eventPublisher = new GameEventPublisher();
+
+    Game g = new Game(eventPublisher);
     IView v = new SimpleView(); //new SwedishView();
-    PlayGame ctrl = new PlayGame();
+    PlayGame ctrl = new PlayGame(g, v);
+    eventPublisher.Add(ctrl);
     
-    while (ctrl.Play(g, v));
+    while (ctrl.Play());
   }
 }
