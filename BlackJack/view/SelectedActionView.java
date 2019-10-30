@@ -1,4 +1,4 @@
-package BlackJack.controller;
+package BlackJack.view;
 
 public enum SelectedActionView {
     Newgame,

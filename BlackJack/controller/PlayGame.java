@@ -1,7 +1,9 @@
 package BlackJack.controller;
 
+import BlackJack.model.IGameEventSubscriber;
 import BlackJack.view.IView;
 import BlackJack.model.Game;
+import BlackJack.view.SelectedActionView;
 
 public class PlayGame implements IGameEventSubscriber {
 
@@ -45,7 +47,7 @@ public class PlayGame implements IGameEventSubscriber {
   }
 
   @Override
-  public void Notify() {
+  public void OnEvent() {
     m_view.DisplayPauseMessage();
     sleep2Seconds();
     displayPlayersHand();

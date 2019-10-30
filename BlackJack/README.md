@@ -7,4 +7,7 @@ I have Forked the original repo so it can be easy to check the changes on each t
 - To pass the publisher to the Dealer. I have to pass it as a parameter to the `Game` then to the `Dealer`.
 - I made the Controller itself as an observer -> Implements `IGameEventSubscriber` ( but it can be implemented on the view where the view subscribe to the publisher events ).
 - I had to add a new `DisplayPauseMessage` to the view to display the wait message.
+
+
+# notes about the diagrams 
  

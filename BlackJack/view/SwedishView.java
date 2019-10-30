@@ -1,7 +1,5 @@
 package BlackJack.view;
 
-import BlackJack.controller.SelectedActionView;
-
 public class SwedishView implements IView
     {
         public void DisplayWelcomeMessage()
@@ -93,6 +91,6 @@ public class SwedishView implements IView
         }
 
         public void DisplayPauseMessage (){
-            System.out.println("... A player is getting a card");
+            System.out.println("En spelare får ett kort. Vänta...");
         }
     }

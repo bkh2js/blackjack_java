@@ -1,7 +1,5 @@
 package BlackJack.view;
 
-import BlackJack.controller.SelectedActionView;
-
 public class SimpleView implements IView
 {
 
@@ -84,6 +82,6 @@ public class SimpleView implements IView
         }
 
         public void DisplayPauseMessage (){
-            System.out.println("============================= A player is getting a card");
+            System.out.println("A player is getting a card. Please wait...");
         }
     }

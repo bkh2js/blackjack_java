@@ -1,6 +1,5 @@
 package BlackJack.model;
 
-import BlackJack.controller.GameEventPublisher;
 import BlackJack.model.rules.*;
 
 public class Dealer extends Player {

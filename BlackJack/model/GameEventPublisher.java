@@ -1,4 +1,4 @@
-package BlackJack.controller;
+package BlackJack.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ public class GameEventPublisher {
 
     private List<IGameEventSubscriber> m_subscribers = new ArrayList<>();
 
-    public void Add(IGameEventSubscriber event){
-        m_subscribers.add(event);
+    public void Add(IGameEventSubscriber subscriber){
+        m_subscribers.add(subscriber);
     }
 
     public void Remove(IGameEventSubscriber event){
@@ -17,7 +17,7 @@ public class GameEventPublisher {
 
     public void Notify(){
         for(IGameEventSubscriber sub : m_subscribers){
-            sub.Notify();
+            sub.OnEvent();
         }
     }
 

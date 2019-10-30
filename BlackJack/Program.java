@@ -1,6 +1,7 @@
 package BlackJack;
 
 import BlackJack.model.Game;
+import BlackJack.model.GameEventPublisher;
 import BlackJack.view.*;
 import BlackJack.controller.*;
 
